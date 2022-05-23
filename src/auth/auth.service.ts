@@ -32,6 +32,12 @@ export class AuthService {
       const payload = {
         sub: user.id,
         email: user.email,
+        accessList: [
+          'add-borrower',
+          'read-borrower',
+          'add-staff',
+          'read-staff',
+        ],
       };
 
       // return this.signToken(user.id, user.email);

@@ -4,7 +4,8 @@ import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { APP_GUARD } from '@nestjs/core';
-import { JwtGuard, RoleGuard } from './auth/guard';
+import { JwtGuard } from './auth/guard';
+import { AbilityModule } from './ability/ability.module';
 
 @Module({
   imports: [
@@ -14,15 +15,12 @@ import { JwtGuard, RoleGuard } from './auth/guard';
     UserModule,
     AuthModule,
     PrismaModule,
+    AbilityModule,
   ],
   providers: [
     {
       provide: APP_GUARD,
       useClass: JwtGuard,
-    },
-    {
-      provide: APP_GUARD,
-      useClass: RoleGuard,
     },
   ],
 })

@@ -27,12 +27,6 @@ export class AuthController {
   @Public()
   @Post('register')
   Register(@Body() user: User): Promise<{ email: string; id: string }> {
-    console.log('userrr', user);
     return this.authservice.register(user);
-  }
-
-  @Get(':uuid')
-  async findOne(@Param('uuid', new ParseUUIDPipe()) uuid: string) {
-    return uuid;
   }
 }
